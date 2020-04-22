@@ -1,0 +1,22 @@
+.button-wrapper {
+    display: grid;
+    justify-content: center;
+    align-items: center;
+    font-weight: bold;
+    font-size: 1.5em;
+    background-color: #474747;
+    color: #ffffff;
+}
+
+.operator-btn {
+    background-color: #ff8d29;
+}
+
+.function-btn {
+    background-color: #bdbdbd;
+    color: #000000;
+}
+
+.zero-btn {
+    grid-column: 1 / 3;
+}
