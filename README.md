@@ -16,7 +16,7 @@ You will also see any lint errors in the console.
 Contributing
 Pull requests are welcome. For major changes, please open an issue first to discuss what you would like to change.
 
-License
+### License
 Created by [Adrian Popan](https://github.com/casp3rus)
 
 MIT
