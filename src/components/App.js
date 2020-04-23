@@ -20,7 +20,7 @@ function App() {
     return setDisplay(val)
   }
 
-  const button = keys.map(elem => <Button key={elem} onClick={(elem) => displayData(elem)}>{elem}</Button>)
+  const button = keys.map(elem => <Button key={elem}>{elem}</Button>)
 
   
   return (
