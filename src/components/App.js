@@ -12,10 +12,15 @@ function App() {
     "7", "8", '9', '×',
     '4', '5', '6', '-',
     '1', '2', '3', '+',
-    '0', '.', '='
-]
+    '0', '•', '='
+  ]
 
-  const button = keys.map(elem => <Button key={elem}>{elem}</Button>)
+  const displayData = (val) => {
+    console.log(val)
+    return setDisplay(val)
+  }
+
+  const button = keys.map(elem => <Button key={elem} onClick={(elem) => displayData(elem)}>{elem}</Button>)
 
   
   return (

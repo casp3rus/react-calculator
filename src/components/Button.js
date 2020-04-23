@@ -30,6 +30,7 @@ export const Button = props => {
     return (
         <div
             className={`button-wrapper ${keyType(props.children)}`}
+            // onClick={e => props.displayData(e)}
         >
             {props.children}
         </div>
