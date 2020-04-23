@@ -1,9 +1,10 @@
 import React from 'react'
+import './Display.css'
 
 export const Display = (props) => {
     return (
-        <div>
-            {props.display}
+        <div className='display-text'>
+            {props.children}
         </div>
     )
 }

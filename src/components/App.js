@@ -1,9 +1,11 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Button } from './Button'
 import { Display } from './Display'
 import './App.css';
 
 function App() {
+
+  const [display, setDisplay] = useState('123,456,789.0')
 
   const keys = [
     "AC", "±", "%", "÷",
@@ -13,13 +15,13 @@ function App() {
     '0', '.', '='
 ]
 
-const button = keys.map(elem => <Button key={elem}>{elem}</Button>)
+  const button = keys.map(elem => <Button key={elem}>{elem}</Button>)
 
   
   return (
     <div className="app">
       <div className='display-container'>
-        <Display />
+        <Display>{display}</Display>
       </div>
       <div className='btns-container'>
         {button}
