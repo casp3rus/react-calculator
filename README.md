@@ -1,5 +1,7 @@
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
+![DEMO_IMAGE](demo.jpg)
+
 ## Installation
 
 Clone this repository to your local environment and run the following commands:
