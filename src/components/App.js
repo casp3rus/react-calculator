@@ -5,7 +5,7 @@ import './App.css';
 
 function App() {
 
-  const [display, setDisplay] = useState('123,456,789.0')
+  const [display, setDisplay] = useState('0.1')
 
   const keys = [
     "AC", "±", "%", "÷",
@@ -19,18 +19,18 @@ function App() {
 
   const handleKeyDown  = ({key}) => {
 
-    console.log('Pressed key:', key, /[0-9]/.test(key))
+    console.log('Pressed key:', key, 'Is it a number?', /[0-9]/.test(key))
 
-    const pressedNumber = key => {
-      if (/[0-9]/.test(key)) {
+    const numberPressed = key => {
+      if (/\d/.test(key)) {
         return key
       }
       return
     }
 
     switch(key) {
-      case pressedNumber(key):
-        return setDisplay(display + pressedNumber(key))
+      case numberPressed(key):
+        return setDisplay(display + numberPressed(key))
       case 'Escape':
         return setDisplay('0')
       case '%':
@@ -45,7 +45,7 @@ function App() {
         return setDisplay(key + ' was pressed')
       case ('=' || 'Enter'):
         return setDisplay(key + ' was pressed')
-      case 'Enter':
+      case 'Backspace':
         return setDisplay(key + ' was pressed')     
       default:
         return setDisplay(display)
