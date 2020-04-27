@@ -19,9 +19,18 @@ function App() {
 
   const handleKeyDown  = ({key}) => {
 
-    console.log('Pressed key:', key)
+    console.log('Pressed key:', key, /[0-9]/.test(key))
+
+    const pressedNumber = key => {
+      if (/[0-9]/.test(key)) {
+        return key
+      }
+      return
+    }
 
     switch(key) {
+      case pressedNumber(key):
+        return setDisplay(display + pressedNumber(key))
       case 'Escape':
         return setDisplay('0')
       case '%':
@@ -36,8 +45,8 @@ function App() {
         return setDisplay(key + ' was pressed')
       case ('=' || 'Enter'):
         return setDisplay(key + ' was pressed')
-      // case 'Enter':
-      //   return setDisplay(key + ' was pressed')     
+      case 'Enter':
+        return setDisplay(key + ' was pressed')     
       default:
         return setDisplay(display)
     }
