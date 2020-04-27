@@ -5,7 +5,7 @@ import './App.css';
 
 function App() {
 
-  const [display, setDisplay] = useState('123,456,789.0')
+  const [display, setDisplay] = useState('0')
 
   const keys = [
     "AC", "±", "%", "÷",
@@ -15,12 +15,33 @@ function App() {
     '0', '•', '='
   ]
 
-  const displayData = (val) => {
-    console.log(val)
-    return setDisplay(val)
+  const handleClick = value => () => {
+    let displayValue = parseFloat(display)
+    switch(value) {
+      case 'AC':
+          return setDisplay('0')
+      case '±':
+          return setDisplay(displayValue * -1) 
+      case '%':
+          return setDisplay(displayValue / 100)
+      case '÷':
+          return 'operator-btn' 
+      case '×':
+          return 'operator-btn' 
+      case '+':
+          return 'operator-btn'
+      case '-':
+          return 'operator-btn'
+      case '=':
+          return 'operator-btn'
+      case '•':
+        return setDisplay(displayValue + '.')
+      default:
+          return setDisplay(displayValue + value)
+    }
   }
 
-  const button = keys.map(elem => <Button key={elem}>{elem}</Button>)
+  const button = keys.map(elem => <Button key={elem} onButtonClick={handleClick}>{elem}</Button>)
 
   
   return (

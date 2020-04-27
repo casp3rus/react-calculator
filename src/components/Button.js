@@ -26,12 +26,13 @@ const keyType = val => {
     }
 }
 
-export const Button = props => {
+export const Button = ({ children, onButtonClick }) => {
     return (
         <div
-            className={`button-wrapper ${keyType(props.children)}`}
+            className={`button ${keyType(children)}`}
+            onClick={onButtonClick(children)}
         >
-            {props.children}
+            {children}
         </div>
     )
 }
