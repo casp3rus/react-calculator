@@ -5,7 +5,7 @@ import './App.css';
 
 function App() {
 
-  const [display, setDisplay] = useState('0.1')
+  const [displayText, setDisplayText] = useState('0')
 
   const keys = [
     "AC", "±", "%", "÷",
@@ -19,7 +19,7 @@ function App() {
 
   const handleKeyDown  = ({key}) => {
 
-    console.log('Pressed key:', key, 'Is it a number?', /[0-9]/.test(key))
+    console.log('Pressed key:', key, ', Is it a number?', /[0-9]/.test(key))
 
     const numberPressed = key => {
       if (/\d/.test(key)) {
@@ -30,25 +30,35 @@ function App() {
 
     switch(key) {
       case numberPressed(key):
-        return setDisplay(display + numberPressed(key))
+        return setDisplayText(displayText + numberPressed(key))
       case 'Escape':
-        return setDisplay('0')
+        return setDisplayText('0')
       case '%':
-        return setDisplay(key + ' was pressed')
+        return setDisplayText(displayText / 100)
       case '/':
-        return setDisplay(key + ' was pressed')
+        return setDisplayText(key + ' was pressed')
       case '*':
-        return setDisplay(key + ' was pressed')
+        return setDisplayText(key + ' was pressed')
       case '-':
-        return setDisplay(key + ' was pressed')
+        return setDisplayText(key + ' was pressed')
       case '+':
-        return setDisplay(key + ' was pressed')
-      case ('=' || 'Enter'):
-        return setDisplay(key + ' was pressed')
+        return setDisplayText(key + ' was pressed')
+      case '=':
+      case 'Enter':
+        return setDisplayText(key + ' was pressed')
+      case '.':
+        if (!displayText.includes('.')) {
+          return setDisplayText(displayText + '.')
+        }
+        return 
       case 'Backspace':
-        return setDisplay(key + ' was pressed')     
+          if (displayText.length > 1) {
+            return setDisplayText(displayText.slice(0, -1))
+          } else {
+            return setDisplayText('0')
+          }
       default:
-        return setDisplay(display)
+        return setDisplayText(displayText)
     }
   }
 
@@ -63,15 +73,13 @@ function App() {
 
   const handleClick = (value) => () => {
 
-    const displayValue = parseFloat(display)
-
     switch(value) {
       case 'AC':
-        return setDisplay('0')
+        return setDisplayText('0')
       case '±':
-        return setDisplay(displayValue * -1) 
+        return setDisplayText((displayText * -1).toString()) 
       case '%':
-        return setDisplay(displayValue / 100)
+        return setDisplayText(displayText / 100)
       case '÷':
         return 'operator-btn' 
       case '×':
@@ -83,9 +91,12 @@ function App() {
       case '=':
         return 'operator-btn'
       case '•':
-        return setDisplay(displayValue + '.')
+        if(!displayText.includes('.')) {
+          return setDisplayText(displayText + '.')
+        }
+        return
       default:
-        return setDisplay(displayValue + value)
+        return setDisplayText(displayText + value)
     }
   }
 
@@ -96,7 +107,7 @@ function App() {
   return (
     <div className="app">
       <div className='display-container'>
-        <Display>{display}</Display>
+        <Display>{displayText}</Display>
       </div>
       <div className='btns-container'>
         {button}
