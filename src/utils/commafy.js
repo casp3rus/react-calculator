@@ -10,21 +10,21 @@ export const commafy = value => {
       if ( parseInt(value) < 0 ) {
         integerSide = value.substring(1, value.indexOf('.'))
         decimalSide = value.substring(value.indexOf('.'))
-        commafiedValue = '-' + parseInt(integerSide).toLocaleString() + decimalSide
+        commafiedValue = '-' + parseInt(integerSide).toLocaleString('en-US') + decimalSide
         return commafiedValue
       } else {
         integerSide = value.substring(0, value.indexOf('.'))
         decimalSide = value.substring(value.indexOf('.'))
-        commafiedValue = parseInt(integerSide).toLocaleString() + decimalSide
+        commafiedValue = parseInt(integerSide).toLocaleString('en-US') + decimalSide
         return commafiedValue
       }
     }
   
     if( parseInt(value) < 0 ) {
       integerSide = value.substring(1)
-      return commafiedValue = '-' + parseInt(integerSide).toLocaleString()
+      return commafiedValue = '-' + parseInt(integerSide).toLocaleString('en-US')
     } else {
-      commafiedValue = parseInt(value).toLocaleString()
+      commafiedValue = parseInt(value).toLocaleString('en-US')
       return commafiedValue
     }
 }

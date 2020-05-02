@@ -51,7 +51,7 @@ function App() {
         setOperator(null);
         return;
       case "%":
-        setDisplayValue(displayValue / 100);
+        setDisplayValue((displayValue / 100).toString());
         setPrevNum(null);
         setOperator(null);
         return;
@@ -122,7 +122,7 @@ function App() {
         return;
       case "%":
         setPrevNum(null);
-        setDisplayValue(displayValue / 100);
+        setDisplayValue((displayValue / 100).toString());
         return;
       case "÷":
         setPrevNum(displayValue);
