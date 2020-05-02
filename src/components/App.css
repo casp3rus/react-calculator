@@ -8,9 +8,13 @@
 }
 
 .display-container {
+  display: flex;
+  justify-content: flex-end;
+  align-items: flex-end;
+  padding-right: 0.5rem;
   background-color: #000000;
-  height: 100%;
-  width: 100%;
+  color: #ffffff;
+  font-size: 5rem;
 }
 
 .btns-container {

@@ -1,0 +1,5 @@
+{
+    "prettier.packageManager": "yarn",
+    "prettier.semi": false,
+    "prettier.singleQuote": true
+}

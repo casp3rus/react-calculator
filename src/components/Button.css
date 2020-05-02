@@ -7,12 +7,15 @@
   background-color: #333333;
   color: #ffffff;
   cursor: pointer;
+  transition: filter 0.3s ease-in-out;
 }
 
 .button:active,
 .button:focus {
-    filter: brightness(120%);
+    filter: brightness(150%);
 }
+
+
 
 .operator-btn {
   background-color: #ff8d29;
