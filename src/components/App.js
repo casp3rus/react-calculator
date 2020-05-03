@@ -7,7 +7,7 @@ import { commafy } from "../utils/commafy";
 
 function App() {
   const [displayValue, setDisplayValue] = useState("0");
-  const [prevNum, setPrevNum] = useState('');
+  const [prevNum, setPrevNum] = useState("");
   const [operator, setOperator] = useState(null);
 
   const keys = [
@@ -79,7 +79,9 @@ function App() {
       case "Enter":
         if (operator) {
           return setDisplayValue(
-            evaluate(`(${prevNum}) ${operator} (${displayValue})`).toString()
+            evaluate(
+              `(${prevNum}) ${operator} (${displayValue})`
+            ).toLocaleString("en-US", { maximumFractionDigits: 8 })
           );
         }
         setPrevNum(null);
@@ -147,7 +149,9 @@ function App() {
       case "=":
         if (operator) {
           setDisplayValue(
-            evaluate(`(${prevNum}) ${operator} (${displayValue})`).toString()
+            evaluate(
+              `(${prevNum}) ${operator} (${displayValue})`
+            ).toLocaleString("en-US", { maximumFractionDigits: 8 })
           );
         }
         setPrevNum(null);
