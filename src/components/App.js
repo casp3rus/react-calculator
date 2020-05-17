@@ -1,33 +1,33 @@
-import React, { useState, useEffect } from "react";
-import { Button } from "./Button";
-import "./App.css";
+import React, { useState, useEffect } from 'react';
+import { Button } from './Button';
+import './App.css';
 
-import { evaluate } from "mathjs";
-import { commafy } from "../utils/commafy";
+import { evaluate } from 'mathjs';
+import { commafy } from '../utils/commafy';
 
 function App() {
-  const [displayValue, setDisplayValue] = useState("0");
-  const [prevNum, setPrevNum] = useState("");
+  const [displayValue, setDisplayValue] = useState('0');
+  const [prevNum, setPrevNum] = useState('');
   const [operator, setOperator] = useState(null);
 
   const keys = [
-    "AC","±","%","÷",
-    "7","8","9","×",
-    "4","5","6","-",
-    "1","2","3","+",
-    "0","•","=",
+    'AC','±','%','÷',
+    '7','8','9','×',
+    '4','5','6','-',
+    '1','2','3','+',
+    '0','•','=',
   ];
 
   // Add keyboard event listener
 
   const handleKeyDown = ({ key }) => {
-    console.log("Pressed key:", key, ", Is it a number?", /[0-9]/.test(key));
-    console.log("Saved operator", operator);
-    console.log("prevNum number:", prevNum, "prevNum Type:", typeof prevNum);
+    console.log('Pressed key:', key, ', Is it a number?', /[0-9]/.test(key));
+    console.log('Saved operator', operator);
+    console.log('prevNum number:', prevNum, 'prevNum Type:', typeof prevNum);
     console.log(
-      "displayValue",
+      'displayValue',
       displayValue,
-      "displayValue Type:",
+      'displayValue Type:',
       typeof displayValue
     );
 
@@ -40,63 +40,63 @@ function App() {
 
     switch (key) {
       case numberPressed(key):
-        if (displayValue[0] === "0" && !displayValue.includes(".")) {
+        if (displayValue[0] === '0' && !displayValue.includes('.')) {
           return setDisplayValue(displayValue.slice(1) + numberPressed(key));
         } else {
           return setDisplayValue(displayValue + numberPressed(key));
         }
-      case "Escape":
-        setDisplayValue("0");
+      case 'Escape':
+        setDisplayValue('0');
         setPrevNum(null);
         setOperator(null);
         return;
-      case "%":
+      case '%':
         setDisplayValue((displayValue / 100).toString());
         setPrevNum(null);
         setOperator(null);
         return;
-      case "/":
+      case '/':
         setPrevNum(displayValue);
-        setOperator("/");
-        setDisplayValue("0");
+        setOperator('/');
+        setDisplayValue('0');
         return;
-      case "*":
+      case '*':
         setPrevNum(displayValue);
-        setOperator("*");
-        setDisplayValue("0");
+        setOperator('*');
+        setDisplayValue('0');
         return;
-      case "-":
+      case '-':
         setPrevNum(displayValue);
-        setOperator("-");
-        setDisplayValue("0");
+        setOperator('-');
+        setDisplayValue('0');
         return;
-      case "+":
+      case '+':
         setPrevNum(displayValue);
-        setOperator("+");
-        setDisplayValue("0");
+        setOperator('+');
+        setDisplayValue('0');
         return;
-      case "=":
-      case "Enter":
+      case '=':
+      case 'Enter':
         if (operator) {
           return setDisplayValue(
             evaluate(
-              `(${prevNum}) ${operator} (${displayValue})`
-            ).toLocaleString("en-US", { maximumFractionDigits: 8 })
+              `${prevNum} ${operator} ${displayValue}`
+            ).toString()
           );
         }
-        setPrevNum(null);
+        setPrevNum('');
         setOperator(null);
         return;
-      case ".":
-        if (!displayValue.includes(".")) {
-          return setDisplayValue(displayValue + ".");
+      case '.':
+        if (!displayValue.includes('.')) {
+          return setDisplayValue(displayValue + '.');
         }
         return;
-      case "Backspace":
+      case 'Backspace':
         if (displayValue.length > 1) {
           return setDisplayValue(displayValue.slice(0, -1));
         } else {
-          return setDisplayValue("0");
+          return setDisplayValue('0');
         }
       default:
         return setDisplayValue(displayValue);
@@ -104,9 +104,9 @@ function App() {
   };
 
   useEffect(() => {
-    window.addEventListener("keydown", handleKeyDown);
+    window.addEventListener('keydown', handleKeyDown);
     return () => {
-      window.removeEventListener("keydown", handleKeyDown);
+      window.removeEventListener('keydown', handleKeyDown);
     };
   });
 
@@ -114,56 +114,56 @@ function App() {
 
   const handleClick = (value) => () => {
     switch (value) {
-      case "AC":
+      case 'AC':
         setPrevNum(null);
-        setDisplayValue("0");
+        setDisplayValue('0');
         return;
-      case "±":
+      case '±':
         setPrevNum(null);
         setDisplayValue((displayValue * -1).toString());
         return;
-      case "%":
+      case '%':
         setPrevNum(null);
         setDisplayValue((displayValue / 100).toString());
         return;
-      case "÷":
+      case '÷':
         setPrevNum(displayValue);
-        setOperator("/");
-        setDisplayValue("0");
+        setOperator('/');
+        setDisplayValue('0');
         return;
-      case "×":
+      case '×':
         setPrevNum(displayValue);
-        setOperator("*");
-        setDisplayValue("0");
+        setOperator('*');
+        setDisplayValue('0');
         return;
-      case "+":
+      case '+':
         setPrevNum(displayValue);
-        setOperator("+");
-        setDisplayValue("0");
+        setOperator('+');
+        setDisplayValue('0');
         return;
-      case "-":
+      case '-':
         setPrevNum(displayValue);
-        setOperator("-");
-        setDisplayValue("0");
+        setOperator('-');
+        setDisplayValue('0');
         return;
-      case "=":
+      case '=':
         if (operator) {
           setDisplayValue(
             evaluate(
-              `(${prevNum}) ${operator} (${displayValue})`
-            ).toLocaleString("en-US", { maximumFractionDigits: 8 })
+              `${prevNum} ${operator} ${displayValue}`
+            ).toString()
           );
         }
-        setPrevNum(null);
+        setPrevNum('');
         setOperator(null);
         return;
-      case "•":
-        if (!displayValue.includes(".")) {
-          return setDisplayValue(displayValue + ".");
+      case '•':
+        if (!displayValue.includes('.')) {
+          return setDisplayValue(displayValue + '.');
         }
         return;
       default:
-        if (displayValue[0] === "0" && !displayValue.includes(".")) {
+        if (displayValue[0] === '0' && !displayValue.includes('.')) {
           return setDisplayValue(displayValue.slice(1) + value);
         } else {
           return setDisplayValue(displayValue + value);
@@ -178,11 +178,11 @@ function App() {
       {elem}
     </Button>
   ));
-
+  
   return (
-    <div className="app">
-      <div className="display-container">{commafy(displayValue)}</div>
-      <div className="btns-container">{button}</div>
+    <div className='app'>
+      <div className='display-container'>{ commafy(displayValue) }</div>
+      <div className='btns-container'>{ button }</div>
     </div>
   );
 }

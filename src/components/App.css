@@ -1,20 +1,21 @@
 .app {
   display: grid;
   grid-template-rows: 25% auto; 
-  width: 320px;
-  height: 520px;
-  background-color: #dbe6e1;
+  width: 298px;
+  height: 480px;
+  background-color: #d4eeff;
   row-gap: 1.5px;
 }
 
 .display-container {
   display: flex;
+  width: 288px;
   justify-content: flex-end;
   align-items: flex-end;
   padding-right: 0.5rem;
   background-color: #000000;
-  color: #ffffff;
-  font-size: 5rem;
+  color: #fc0000;
+  font-size: 5.5em;
 }
 
 .btns-container {
